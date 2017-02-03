@@ -58,22 +58,39 @@ var woodItems = function (items) {
     if(items[i].materials.includes ("wood")) {
     woodArray.push(items[i].title);
     }
-  }return woodArray;
+  } return woodArray;
 }
 
 var answer4 = document.getElementById("answer4");
 answer4.innerHTML = woodItems(items) + " is made of wood.";
 
 //5.Which items are made of eight or more materials? Display the name, number of items and the items it is made of.
+var answer5 = document.getElementById("answer5");
+
 var eightMats = function (items) {
-  var eightArray =[];
-  for(var i = 0; i < items.length; i++){
-    if(items[i].materials.length > 8) {
-      eightArray.push(items[i].title);
-    }
-  } return eightArray;
+  for (var i = 0; i < items.length; i++) {
+   if (items[i].materials.length >= 8) {
+     console.log(items[i].title);
+     answer5.innerHTML = items[i].title + " has" + items[i].materials.length + " materials:";
+  }
+ }
 }
 
-var answer5 = document.getElementById("answer5");
-answer5.innerHTML = eightMats(items);
+
+
 //6. How many items were made by their sellers?
+
+
+var sellerMade = function (items) {
+  var whoMade =[];
+  for (var i = 0; i < items.length; i++){
+    if(items[i].who_made.includes("i_did")) {
+    whoMade.push(items[i].title);
+    /*console.log(whoMade);*/
+    }
+  }
+  return whoMade.length;
+}
+
+var answer6 = document.getElementById("answer6");
+answer6.innerHTML = sellerMade(items) + " items were made by their seller."
